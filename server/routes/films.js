@@ -1,4 +1,3 @@
-import { MongoClient, ObjectId } from 'mongodb';
 import { getCollection, getItemById, getJoinedCollection } from "../mongoOps.js"
 import { app } from "../initServer.js"
 
