@@ -1,102 +1,25 @@
-import {URL, DBNAME, SERVER_PORT, app} from "../initServer.js"
+import { MongoClient, ObjectId } from 'mongodb';
+import { getCollection, getItemById, getJoinedCollection } from "../mongoOps.js"
+import { app } from "../initServer.js"
 
 console.log ("Film routes initialized")
 
 app.get("/api/films/:id/characters", async (req, res) => {
-    try {
-        const { color } = req.body
+    getJoinedCollection (req, res, "film_id", "character_id", "characters", "films_characters")
 
-        const client = await MongoClient.connect(url)
-        const db = client.db(dbName)
-        const collection = db.collection(collectionName)
-        const socks = await collection.find({ "sockDetails.color": color }).toArray()
-
-        if (socks.length > 0)
-            res.status(200).json(socks)
-        else
-            res.status(404).send("No socks found with that color.")
-    }
-    catch (err) {
-        console.error("Error: ", err)
-        res.status(500).send("Hmmm, something smells... No socks for you! ☹\n");
-    }
 })
 app.get("/api/films/:id/starships", async (req, res) => {
-    try {
-        const { color } = req.body
-
-        const client = await MongoClient.connect(url)
-        const db = client.db(dbName)
-        const collection = db.collection(collectionName)
-        const socks = await collection.find({ "sockDetails.color": color }).toArray()
-
-        if (socks.length > 0)
-            res.status(200).json(socks)
-        else
-            res.status(404).send("No socks found with that color.")
-    }
-    catch (err) {
-        console.error("Error: ", err)
-        res.status(500).send("Hmmm, something smells... No socks for you! ☹\n");
-    }
+    getJoinedCollection (req, res, "film_id", "starship_id", "starships", "films_starships")
 })
 
 app.get("/api/films/:id/planets", async (req, res) => {
-    try {
-        const { color } = req.body
-
-        const client = await MongoClient.connect(url)
-        const db = client.db(dbName)
-        const collection = db.collection(collectionName)
-        const socks = await collection.find({ "sockDetails.color": color }).toArray()
-
-        if (socks.length > 0)
-            res.status(200).json(socks)
-        else
-            res.status(404).send("No socks found with that color.")
-    }
-    catch (err) {
-        console.error("Error: ", err)
-        res.status(500).send("Hmmm, something smells... No socks for you! ☹\n");
-    }
+    getJoinedCollection (req, res, "film_id", "planet_id", "planets", "films_planets")
 })
 
 app.get("/api/films/:id", async (req, res) => {
-    try {
-        const { color } = req.body
-
-        const client = await MongoClient.connect(url)
-        const db = client.db(dbName)
-        const collection = db.collection(collectionName)
-        const socks = await collection.find({ "sockDetails.color": color }).toArray()
-
-        if (socks.length > 0)
-            res.status(200).json(socks)
-        else
-            res.status(404).send("No socks found with that color.")
-    }
-    catch (err) {
-        console.error("Error: ", err)
-        res.status(500).send("Hmmm, something smells... No socks for you! ☹\n");
-    }
+    getItemById (req, res, "films")
 })
 
 app.get("/api/films", async (req, res) => {
-    try {
-        const { color } = req.body
-
-        const client = await MongoClient.connect(url)
-        const db = client.db(dbName)
-        const collection = db.collection(collectionName)
-        const socks = await collection.find({ "sockDetails.color": color }).toArray()
-
-        if (socks.length > 0)
-            res.status(200).json(socks)
-        else
-            res.status(404).send("No socks found with that color.")
-    }
-    catch (err) {
-        console.error("Error: ", err)
-        res.status(500).send("Hmmm, something smells... No socks for you! ☹\n");
-    }
+    getCollection (req, res, "films")
 })
