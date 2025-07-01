@@ -1,4 +1,5 @@
 # NOTE: To use this script, you should first clone the SWAPI repo, move this script into the repo, and then run the script
+# Make sure that you already have MongoDB running and have created the necessary database and collections
 
 mongoimport --uri mongodb://localhost:27017/swapi --collection films --drop --file ./json-data/films.json --jsonArray
 mongoimport --uri mongodb://localhost:27017/swapi --collection characters --drop --file ./json-data/characters.json --jsonArray
