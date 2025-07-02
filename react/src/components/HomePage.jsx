@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const HomePage = () => {
-    const url = 'http://localhost:9001/api/characters';
+    const url = 'http://localhost:9009/api/characters';
     const [characters, setCharacters] = useState([]);
 
     useEffect(() => {
