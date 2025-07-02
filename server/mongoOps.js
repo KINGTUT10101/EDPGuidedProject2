@@ -11,7 +11,7 @@ export async function getCollection (req, res, collectionName) {
         if (data.length > 0)
             res.status(200).json(data)
         else
-            res.status(404).send("No data found.")
+            res.status(404).json({error: "No data found."})
     }
     catch (err) {
         console.error("Error: ", err)
@@ -31,7 +31,7 @@ export async function getItemById (req, res, collectionName) {
         if (data)
             res.status(200).json(data)
         else
-            res.status(404).send("No data found.")
+            res.status(404).json({error: "No data found."})
     }
     catch (err) {
         console.error("Error: ", err)
@@ -64,7 +64,7 @@ export async function getJoinedCollection (req, res, idFrom, idTo, collectionNam
         if (data.length > 0)
             res.status(200).json(data)
         else
-            res.status(404).send("No data found.")
+            res.status(404).json({error: "No data found."})
     }
     catch (err) {
         console.error("Error: ", err)
