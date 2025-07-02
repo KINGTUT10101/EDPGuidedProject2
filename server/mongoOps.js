@@ -57,7 +57,8 @@ export async function getJoinedCollection (req, res, idFrom, idTo, collectionNam
                 }
             },
             {$unwind: "$details"},
-            {$project: {_id: 0, details: 1}}
+            {$project: {_id: 0, details: 1}},
+            { $replaceRoot: { newRoot: "$details" } }
         ]).toArray ()
 
         if (data.length > 0)
