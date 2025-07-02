@@ -4,7 +4,5 @@ import React from 'react';
 const FilmsPage = () => {
 
 
-
-
 };
 export default FilmsPage;
