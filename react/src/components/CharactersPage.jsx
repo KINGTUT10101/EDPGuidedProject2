@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const CharactersPage = () => {
@@ -10,13 +11,13 @@ const CharactersPage = () => {
 
     useEffect(() => {
         // Fetch character details
-        fetch(`http://localhost:9009/api/characters/${id}`)
+        fetch(`${BASE_URL}/characters/${id}`)
             .then(res => res.json())
             .then(data => {
                 setCharacter(data);
                 // Fetch the planet using the homeworld id
                 if (data.homeworld) {
-                    fetch(`http://localhost:9009/api/planets/${data.homeworld}`)
+                    fetch(`${BASE_URL}/planets/${data.homeworld}`)
                         .then(res => res.json())
                         .then(planetData => {
                             setPlanet(planetData);
@@ -30,7 +31,7 @@ const CharactersPage = () => {
             });
 
         // Fetch character's films
-        fetch(`http://localhost:9009/api/characters/${id}/films`)
+        fetch(`${BASE_URL}/characters/${id}/films`)
             .then(res => res.json())
             .then(data => {
                 console.log('Fetched films:', data); 

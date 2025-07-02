@@ -4,7 +4,7 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const HomePage = () => {
-    const url = 'http://localhost:9009/api/characters'
+    const url = `${BASE_URL}/characters`
     const [characters, setCharacters] = useState([])
     let [fullCharacters, setFullCharacters] = useState(characters)
 

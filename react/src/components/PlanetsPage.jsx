@@ -10,17 +10,17 @@ const PlanetsPage = () => {
 
     useEffect(() => {
         // Fetch planet details
-        fetch(`http://localhost:9009/api/planets/${id}`)
+        fetch(`${BASE_URL}/planets/${id}`)
             .then(res => res.json())
             .then(data => setPlanet(data));
 
         // Fetch characters from this planet using the correct endpoint
-        fetch(`http://localhost:9009/api/planets/${id}/characters`)
+        fetch(`${BASE_URL}/planets/${id}/characters`)
             .then(res => res.json())
             .then(data => setCharacters(data));
 
         //Fetch films from this planet
-        fetch(`http://localhost:9009/api/planets/${id}/films`)
+        fetch(`${BASE_URL}/planets/${id}/films`)
             .then(res => res.json())
             .then(data =>setFilms(data));
 
