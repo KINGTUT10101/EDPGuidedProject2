@@ -43,7 +43,7 @@ const FilmsPage = () => {
           film.characters = await fetchCharacters(film)
           film.starships = await fetchStarships(film)
           film.planets = await fetchPlanets(film)
-          setFilmData (film)
+          setFilmData(film)
         })
     }
     catch (err) {
@@ -51,59 +51,61 @@ const FilmsPage = () => {
     }
   }, [id]);
 
-return (
-  <div style={{ padding: "20px" }}>
-    <Link to="/" className="btn btn-secondary mb-3">Back to Home</Link>
-    <h1 id="title">{filmData?.title}</h1>
-    <section id="generalInfo">
-      <p>Release Date: <span id="release_date">{filmData?.release_date}</span></p>
-      <p>Episode: <span id="episode">{filmData?.episode_id}</span></p>
-      <p>Director: <span id="director">{filmData?.director}</span></p>
-    </section>
-    <section id="producers">
-      <h2>Producer(s)</h2>
-      <ul>
-        {
-          filmData?.producer?.split(",")?.map(item => item.trim())?.map(producer =>
-            <li key={producer}>
-              <p>
-                {producer}
-              </p>
-            </li>
-          )
-        }
-      </ul>
-    </section>
-    <section id="characters">
-      <h2>Featured Characters</h2>
-      <ul>
-        {
-          filmData?.characters?.map(character => <li key={character.id}><a href={`/characters/${character.id}`}>{character.name}</a></li>)
-        }
-      </ul>
-    </section>
-    <section id="starships">
-      <h2>Featured Starships</h2>
-      <ul>
-        {
-          filmData?.starships?.map(starship => <li key={starship.id}><a href={`/starships/${starship.id}`}>{convertToNameCase(starship.name ?? `${starship.starship_class} (${starship.id})`)}</a></li>)
-        }
-      </ul>
-    </section>
-    <section id="planets">
-      <h2>Featured Planets</h2>
-      <ul>
-        {
-          filmData?.planets?.map(planet =>
-            <li key={planet.id}><a href={`/planets/${planet.id}`}>{planet.name}</a></li>)
-        }
-      </ul>
-    </section>
-    <section id="crawl_section">
-      <h2>Opening Crawl</h2>
-      <p><span key="opening_crawl">{filmData?.opening_crawl}</span></p>
-    </section>
-  </div>
-)
+  if (!filmData) return <div>Loading...</div>
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <Link to="/" className="btn btn-secondary mb-3">Back to Home</Link>
+      <h1 id="title">{filmData?.title}</h1>
+      <section id="generalInfo">
+        <p>Release Date: <span id="release_date">{filmData?.release_date}</span></p>
+        <p>Episode: <span id="episode">{filmData?.episode_id}</span></p>
+        <p>Director: <span id="director">{filmData?.director}</span></p>
+      </section>
+      <section id="producers">
+        <h2>Producer(s)</h2>
+        <ul>
+          {
+            filmData?.producer?.split(",")?.map(item => item.trim())?.map(producer =>
+              <li key={producer}>
+                <p>
+                  {producer}
+                </p>
+              </li>
+            )
+          }
+        </ul>
+      </section>
+      <section id="characters">
+        <h2>Featured Characters</h2>
+        <ul>
+          {
+            filmData?.characters?.map(character => <li key={character.id}><a href={`/characters/${character.id}`}>{character.name}</a></li>)
+          }
+        </ul>
+      </section>
+      <section id="starships">
+        <h2>Featured Starships</h2>
+        <ul>
+          {
+            filmData?.starships?.map(starship => <li key={starship.id}><a href={`/starships/${starship.id}`}>{convertToNameCase(starship.name ?? `${starship.starship_class} (${starship.id})`)}</a></li>)
+          }
+        </ul>
+      </section>
+      <section id="planets">
+        <h2>Featured Planets</h2>
+        <ul>
+          {
+            filmData?.planets?.map(planet =>
+              <li key={planet.id}><a href={`/planets/${planet.id}`}>{planet.name}</a></li>)
+          }
+        </ul>
+      </section>
+      <section id="crawl_section">
+        <h2>Opening Crawl</h2>
+        <p><span key="opening_crawl">{filmData?.opening_crawl}</span></p>
+      </section>
+    </div>
+  )
 };
 export default FilmsPage;
