@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const HomePage = () => {
-    const url = 'http://localhost:9001/api/characters';
+    const url = 'http://localhost:9009/api/characters';
     const [characters, setCharacters] = useState([]);
 
     useEffect(() => {
