@@ -16,6 +16,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/characters/:id" element={<CharactersPage />} />
         <Route path="/planets/:id" element={<PlanetsPage />} />
+        <Route path="/films/:id" element={<FilmsPage />} />
       </Routes>
     </Router>
   );
