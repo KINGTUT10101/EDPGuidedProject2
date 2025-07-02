@@ -37,27 +37,29 @@ const PlanetsPage = () => {
             <p><b>Terrain:</b> {planet.terrain}</p>
             <p><b>Population:</b> {planet.population}</p>
             <hr />
-            <h4>Characters from {planet.name}:</h4>
-            <ul>
-              {characters.length === 0 && <li>No characters found.</li>}
-              {characters.map(char => (
-                <li key={char.id}>
-                  <p>{char.name}</p>
-                  <Link to={`/characters/${char.id}`}>character page</Link>
-                </li>
-              ))}
-            </ul>
-
-            <h4>Films from this planet</h4>
-            <ul>
-                {films.length === 0 && <li>No films found.</li>}
-                {films.map(film => (
-                    <li key={film.id}>
-                        <p>{film.title}</p> 
-                        <Link to={`/films/${film.id}`}> films link </Link>
+            <section id="characters">
+                <h4>Characters from {planet.name}:</h4>
+                <ul>
+                  {characters.length === 0 && <li>No characters found.</li>}
+                  {characters.map(char => (
+                    <li key={char.id}>
+                      <Link to={`/characters/${char.id}`}>{char.name}</Link>
                     </li>
-                ))}
-            </ul>
+                  ))}
+                </ul>
+            </section>
+
+            <section id="characters">
+                <h4>Films from this planet</h4>
+                <ul>
+                    {films.length === 0 && <li>No films found.</li>}
+                    {films.map(film => (
+                        <li key={film.id}>
+                            <Link to={`/films/${film.id}`}> {film.title} </Link>
+                        </li>
+                    ))}
+                </ul>
+            </section>
 
         </div>
     );

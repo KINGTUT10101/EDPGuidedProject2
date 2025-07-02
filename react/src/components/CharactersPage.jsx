@@ -49,21 +49,26 @@ const CharactersPage = () => {
         <div style={{ padding: "20px" }}>
             <Link to="/" className="btn btn-secondary mb-3">Back to Home</Link>
             <h2>{character.name}</h2>
-            <p><b>Gender:</b> {character.gender}</p>
-            <p><b>Mass:</b> {character.mass}</p>
-            <p><b>Date of birth:</b> {character.birth_year}</p>
+            <section id="generalInfo">
+                <p><b>Gender:</b> {character.gender}</p>
+                <p><b>Mass:</b> {character.mass}</p>
+                <p><b>Date of birth:</b> {character.birth_year}</p>
+            </section>
             <p><b>Home planet:</b> {planet ? (
               <Link to={`/planets/${character.homeworld}`}>{planet.name}</Link>
             ) : "Unknown"}</p>
-            <p><b>Films appeared in:</b></p>
-            <ul>
-              {films.length === 0 && <li>No films found.</li>}
-              {films.map(film => (
-                <li key={film.id}>
-                  <a href={`/films/${film.id}`}>{film.title}</a>
-                </li>
-              ))}
-            </ul>
+            <section id="characters">
+                <p><b>Films appeared in:</b></p>
+                <ul>
+                  {films.length === 0 && <li>No films found.</li>}
+                  {films.map(film => (
+                    <li key={film.id}>
+                      <a href={`/films/${film.id}`}>{film.title}</a>
+                    </li>
+                  ))}
+                </ul> 
+            </section>
+
         </div>
     );
 };
