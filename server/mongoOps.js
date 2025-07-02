@@ -26,7 +26,7 @@ export async function getItemById (req, res, collectionName) {
         const client = await MongoClient.connect(URL)
         const db = client.db(DBNAME)
         const collection = db.collection(collectionName)
-        const data = await collection.findOne({ id: Number(id) }).details
+        const data = await collection.findOne({ id: Number(id) })
 
         if (data)
             res.status(200).json(data)
