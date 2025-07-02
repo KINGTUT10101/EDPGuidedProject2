@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const CharactersPage = () => {
     const { id } = useParams();

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const PlanetsPage = () => {
     const { id } = useParams();
@@ -18,6 +19,11 @@ const PlanetsPage = () => {
             .then(res => res.json())
             .then(data => setCharacters(data));
 
+        //Fetch films from this planet
+        fetch(`http://localhost:9009/api/planets/${id}/films`)
+            .then(res => res.json())
+            .then(data =>setFilms(data));
+
     }, [id]);
 
     if (!planet) return <div>Loading...</div>;
@@ -33,13 +39,26 @@ const PlanetsPage = () => {
             <hr />
             <h4>Characters from {planet.name}:</h4>
             <ul>
-                {characters.length === 0 && <li>No characters found.</li>}
-                {characters.map(char => (
-                    <li key={char.details.id}>
-                        <p>{char.details.name}</p>
+              {characters.length === 0 && <li>No characters found.</li>}
+              {characters.map(char => (
+                <li key={char.details.id}>
+                  <p>{char.details.name}</p>
+                  <Link to={`/characters/${char.details.id}`}>character page</Link>
+                </li>
+              ))}
+            </ul>
+
+            <h4>Films from this planet</h4>
+            <ul>
+                {films.length === 0 && <li>No films found.</li>}
+                {films.map(film => (
+                    <li key={film.details.id}>
+                        <p>{film.details.title}</p> 
+                        <Link> films link </Link>
                     </li>
                 ))}
             </ul>
+
         </div>
     );
 };
