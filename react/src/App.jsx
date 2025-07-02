@@ -7,6 +7,7 @@ import HomePage from './components/HomePage.jsx';
 import FilmsPage from './components/FilmsPage.jsx';
 import PlanetsPage from './components/PlanetsPage.jsx';
 import CharactersPage from './components/CharactersPage.jsx';
+import StarshipsPage from './components/StarshipsPage.jsx';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/characters/:id" element={<CharactersPage />} />
         <Route path="/planets/:id" element={<PlanetsPage />} />
         <Route path="/films/:id" element={<FilmsPage />} />
+        <Route path="/starships/:id" element={<StarshipsPage />} />
       </Routes>
     </Router>
   );
