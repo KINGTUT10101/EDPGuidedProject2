@@ -32,7 +32,7 @@ async function fetchPlanets(film) {
 
 const FilmsPage = () => {
   const { id } = useParams()
-  const [filmData, setFilmData] = useState({})
+  const [filmData, setFilmData] = useState()
 
   // Fetch film data
   useEffect(() => {
