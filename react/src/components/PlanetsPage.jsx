@@ -54,7 +54,7 @@ const PlanetsPage = () => {
                 {films.map(film => (
                     <li key={film.id}>
                         <p>{film.title}</p> 
-                        <Link> films link </Link>
+                        <Link to={`/films/${film.id}`}> films link </Link>
                     </li>
                 ))}
             </ul>
