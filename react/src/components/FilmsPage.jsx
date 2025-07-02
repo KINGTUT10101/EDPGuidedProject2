@@ -78,7 +78,7 @@ return (
       <h2>Featured Characters</h2>
       <ul>
         {
-          filmData?.characters?.map(character => <li key={character.id}><a href={`/character/id=${character.id}`}>{character.name}</a></li>)
+          filmData?.characters?.map(character => <li key={character.id}><a href={`/characters/${character.id}`}>{character.name}</a></li>)
         }
       </ul>
     </section>
@@ -86,7 +86,7 @@ return (
       <h2>Featured Starships</h2>
       <ul>
         {
-          filmData?.starships?.map(starship => <li key={starship.id}><a href={`/starship/id=${starship.id}`}>{convertToNameCase(starship.name ?? `${starship.starship_class} (${starship.id})`)}</a></li>)
+          filmData?.starships?.map(starship => <li key={starship.id}><a href={`/starships/${starship.id}`}>{convertToNameCase(starship.name ?? `${starship.starship_class} (${starship.id})`)}</a></li>)
         }
       </ul>
     </section>
@@ -95,7 +95,7 @@ return (
       <ul>
         {
           filmData?.planets?.map(planet =>
-            <li key={planet.id}><a href={`/planet/id=${planet.id}`}>{planet.name}</a></li>)
+            <li key={planet.id}><a href={`/planets/${planet.id}`}>{planet.name}</a></li>)
         }
       </ul>
     </section>
