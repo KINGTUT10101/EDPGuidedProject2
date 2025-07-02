@@ -41,9 +41,9 @@ const PlanetsPage = () => {
             <ul>
               {characters.length === 0 && <li>No characters found.</li>}
               {characters.map(char => (
-                <li key={char.details.id}>
-                  <p>{char.details.name}</p>
-                  <Link to={`/characters/${char.details.id}`}>character page</Link>
+                <li key={char.id}>
+                  <p>{char.name}</p>
+                  <Link to={`/characters/${char.id}`}>character page</Link>
                 </li>
               ))}
             </ul>
@@ -52,8 +52,8 @@ const PlanetsPage = () => {
             <ul>
                 {films.length === 0 && <li>No films found.</li>}
                 {films.map(film => (
-                    <li key={film.details.id}>
-                        <p>{film.details.title}</p> 
+                    <li key={film.id}>
+                        <p>{film.title}</p> 
                         <Link> films link </Link>
                     </li>
                 ))}

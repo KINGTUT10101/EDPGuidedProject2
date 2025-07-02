@@ -59,8 +59,8 @@ const CharactersPage = () => {
             <ul>
               {films.length === 0 && <li>No films found.</li>}
               {films.map(film => (
-                <li key={film.details.id}>
-                  <a href={`/films/${film.details.id}`}>{film.details.title}</a>
+                <li key={film.id}>
+                  <a href={`/films/${film.id}`}>{film.title}</a>
                 </li>
               ))}
             </ul>
